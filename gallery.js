@@ -73,22 +73,22 @@ closeGallery.addEventListener('click', () => {
 })
 
 
-toggleLeft.addEventListener('click', () => {
+toggleRight.addEventListener('click', () => {
     hideSwappedImage();
     swappedImage = getCurrentImage();
     swappedImage.classList.add('swapLeftOut');
-    selectedPictureNumber = selectedPictureNumber - 1;
+    selectedPictureNumber = selectedPictureNumber + 1;
     hideSwappedImage();
     getCurrentImage().classList.add('swapLeftIn');
     imagePopper();
     setImageNumber();
 })
 
-toggleRight.addEventListener('click', () => {
+toggleLeft.addEventListener('click', () => {
     hideSwappedImage();
     swappedImage = getCurrentImage();
     swappedImage.classList.add('swapRightOut');
-    selectedPictureNumber = selectedPictureNumber + 1;
+    selectedPictureNumber = selectedPictureNumber - 1;
     hideSwappedImage();
     getCurrentImage().classList.add('swapRightIn')
     imagePopper();
@@ -109,3 +109,19 @@ function cloeWithEscapeKey(event) {
 }
 
 document.body.addEventListener('keydown', cloeWithEscapeKey);
+
+
+
+
+let counter = 0;
+let turnOnPictures = setInterval(function(){ 
+    galleryList[counter].classList.add('loadSmallPictures')
+    if (counter === galleryList.length-1)
+    {
+        clearInterval(turnOnPictures);
+    }
+    counter++; 
+}, 100);
+  
+    
+
